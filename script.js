@@ -22,6 +22,7 @@
     //else
         //return loss
 
+//randomly chooses rock paper or scissors
 function getComputerChoice(){
     let x = Math.floor((Math.random() * 3) + 1);
     let choice;
@@ -36,8 +37,10 @@ function getComputerChoice(){
             choice = "scissors";
             break;
     }
+    return choice;
 }
 
+//Returns the user's choice b/w rock paper or scissors
 function getHumanChoice(){
     let choice = prompt("Rock, Paper, or Scissors?").toLowerCase();
     if (choice === "rock" || choice === "paper" || choice === "scissors"){
@@ -46,3 +49,46 @@ function getHumanChoice(){
         return "invalid input";
     }
 }
+
+//global score variables
+let humanScore = 0;
+let computerScore = 0;
+
+//Checks if human beats computer, and increments their respective scores
+function playRound(humanChoice, computerChoice){
+    if (humanChoice === computerChoice){
+        console.log(`Tie game! You both chose ${humanChoice}.`);
+    } else if (humanChoice === "rock"){
+        if (computerChoice === "scissors"){
+            humanScore++;
+            console.log("You win! Rock beats scissors.");
+        } else{
+            computerScore++;
+            console.log("You lose! Paper beats rock.");
+        }
+    } else if (humanChoice === "paper"){
+        if (computerChoice === "rock"){
+            humanScore++;
+            console.log("You win! Paper beats rock.");
+        } else{
+            computerScore++;
+            console.log("You lose! Scissors beats paper.");
+        }
+    } else if (humanChoice === "scissors"){
+        if (computerChoice === "paper"){
+            humanScore++;
+            console.log("You win! Scissors beats paper.");
+        } else{
+            computerScore++;
+            console.log("You lose! Rock beats scissors.");
+        }
+    }
+}
+
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
+
+console.log(humanSelection);
+console.log(computerSelection);
+
+playRound(humanSelection, computerSelection);
