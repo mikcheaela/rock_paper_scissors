@@ -76,3 +76,5 @@ function playGame(){
         console.log(`Tie game! You tied the computer ${humanScore}-${computerScore}`);
     }
 }
+
+playGame();
